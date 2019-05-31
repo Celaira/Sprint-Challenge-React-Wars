@@ -9,13 +9,22 @@ class App extends Component {
     super();
     this.state = {
       starwarsChars: [],
-      url: 'https://swapi.co/api/people/?page=',
       current: 1
     };
   }
 
-  nextPage = (url, current) => {
-/*    this.getCharacters(`${url}${}`) */
+  nextPage = () => {
+    this.getCharacters(`https://swapi.co/api/people/?page=${ this.state.current }`);
+    this.setState(PrevState => ({
+      current: PrevState.current + 1
+    }));
+  }
+
+  prevPage = () => {
+    this.getCharacters(`https://swapi.co/api/people/?page=${this.state.current }`);
+    this.setState(PrevState => ({
+      current: PrevState.current - 1
+    }));
   }
 
   componentDidMount() {
@@ -46,6 +55,10 @@ class App extends Component {
         <h1 className="Header">React Wars</h1>
 
         <CharacterList Characters={this.state.starwarsChars} />
+
+        <div className="pageButtons">
+          <button onClick={this.prevPage}>Previous</button> || <button onClick={this.nextPage}>Next</button>
+        </div>
       </div>
 
     );
