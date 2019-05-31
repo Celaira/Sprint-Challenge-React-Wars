@@ -53,12 +53,13 @@ class App extends Component {
     return (
       <div className="App">
         <h1 className="Header">React Wars</h1>
-
-        <CharacterList Characters={this.state.starwarsChars} />
-
         <div className="pageButtons">
           <button onClick={this.prevPage}>Previous</button> || <button onClick={this.nextPage}>Next</button>
         </div>
+
+
+        <CharacterList Characters={this.state.starwarsChars} />
+
       </div>
 
     );

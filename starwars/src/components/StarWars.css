@@ -1,0 +1,22 @@
+.character-wrapper {
+  display: flex;
+  width: 60%;
+  margin: 0 auto;
+  flex-flow: column nowrap;
+}
+
+header {
+  padding: 0;
+  margin-bottom: 0;
+}
+
+.charHead {
+  text-transform: uppercase;
+  background: white;
+  border-bottom: 1px solid lightgrey;
+  padding: 5px;
+}
+.charCard {
+  background: white;
+  margin-bottom: 10px;
+}
