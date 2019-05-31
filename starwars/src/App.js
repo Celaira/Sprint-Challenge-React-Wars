@@ -1,12 +1,30 @@
 import React, { Component } from 'react';
+import CharacterList from './components/CharacterList';
+
 import './App.css';
+
 
 class App extends Component {
   constructor() {
     super();
     this.state = {
-      starwarsChars: []
+      starwarsChars: [],
+      current: 1
     };
+  }
+
+  nextPage = () => {
+    this.getCharacters(`https://swapi.co/api/people/?page=${ this.state.current }`);
+    this.setState(PrevState => ({
+      current: PrevState.current + 1
+    }));
+  }
+
+  prevPage = () => {
+    this.getCharacters(`https://swapi.co/api/people/?page=${this.state.current }`);
+    this.setState(PrevState => ({
+      current: PrevState.current - 1
+    }));
   }
 
   componentDidMount() {
@@ -29,11 +47,21 @@ class App extends Component {
       });
   };
 
+
+
   render() {
     return (
       <div className="App">
         <h1 className="Header">React Wars</h1>
+        <div className="pageButtons">
+          <button onClick={this.prevPage}>Previous</button> || <button onClick={this.nextPage}>Next</button>
+        </div>
+
+
+        <CharacterList Characters={this.state.starwarsChars} />
+
       </div>
+
     );
   }
 }
