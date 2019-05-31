@@ -1,12 +1,21 @@
 import React, { Component } from 'react';
+import CharacterList from './components/CharacterList';
+
 import './App.css';
+
 
 class App extends Component {
   constructor() {
     super();
     this.state = {
-      starwarsChars: []
+      starwarsChars: [],
+      url: 'https://swapi.co/api/people/?page=',
+      current: 1
     };
+  }
+
+  nextPage = (url, current) => {
+/*    this.getCharacters(`${url}${}`) */
   }
 
   componentDidMount() {
@@ -29,11 +38,16 @@ class App extends Component {
       });
   };
 
+
+
   render() {
     return (
       <div className="App">
         <h1 className="Header">React Wars</h1>
+
+        <CharacterList Characters={this.state.starwarsChars} />
       </div>
+
     );
   }
 }
